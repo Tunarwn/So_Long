@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_1.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emreyilmaz <emreyilmaz@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tturna <tturna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 14:37:17 by tturna            #+#    #+#             */
-/*   Updated: 2022/08/14 15:30:50 by emreyilmaz       ###   ########.fr       */
+/*   Updated: 2022/08/23 16:12:41 by tturna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ char	*ft_read_map(int fd)
 
 	i = 0;
 	a = read(fd, dizi, 2000);
-	//
 	dizi[a] = '\0';
 	new = strdup(dizi);
 	return (new);
@@ -33,15 +32,15 @@ int	check_map(t_game *tuna, int y, int x)
 	{
 		x = -1;
 		if (strlen(tuna->map[y]) != tuna->max_x)
-			ft_exit("yamuk harita dizilimi !");
+			ft_exit("wrong order !");
 		while (++x < tuna->max_x)
 		{
 			if (tuna->map[y][x] != '1' && (y == 0 || y == tuna->max_y - 1))
-				ft_exit("Duvarlar hatalı !");
+				ft_exit("wrong wall !");
 			else if (tuna->map[y][x] != '1' && (x == 0 || x == tuna->max_x - 1))
-				ft_exit("Sağ sol kontrol et !");
-			else if (strchr("CEP01", tuna->map[y][x]) == 0)
-				ft_exit("bozuk map objeleri !");
+				ft_exit("right left check !");
+			else if (!strchr("CEP01", tuna->map[y][x]))
+				ft_exit("invalid character !");
 		}
 	}
 	return (1);
@@ -59,7 +58,7 @@ int	ft_strlen(char *s)
 	return (i);
 }
 
-int	ft_init(t_game *tuna, int ac, char **av)
+int	ft_init(t_game *tuna, char **av)
 {
 	char	*map;
 	int		fd;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emreyilmaz <emreyilmaz@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tturna <tturna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 17:21:34 by tturna            #+#    #+#             */
-/*   Updated: 2022/08/14 15:25:40 by emreyilmaz       ###   ########.fr       */
+/*   Updated: 2022/08/23 15:59:42 by tturna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,5 @@ char	**ft_split(char *s, int i, int i2, int i3)
 	}
 	res[i2] = 0;
 	return (res);
+	free(res);
 }

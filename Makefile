@@ -1,7 +1,7 @@
 MINILIBX	= minilibx/libmlx.a
-CC 			= gcc
+CC 			= gcc -glldb
 FLAGS 		= -Wall -Wextra -Werror
-NAME 		= so_long	
+NAME 		= so_long
 LFLAGS		= -framework OpenGL -framework AppKit
 INCLUDE		= inc
 SRCS		= src/utils_1.c src/main.c src/ft_split.c src/create.c src/hareket.c
@@ -28,6 +28,6 @@ fclean: clean
 	make -C ft_printf fclean
 
 norm:
-	norminette src/*.C
-	norminette *.h
+	norminette src/*.c
+	norminette inc/*.h
 	norminette ft_printf/*.c

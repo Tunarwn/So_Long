@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emreyilmaz <emreyilmaz@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tturna <tturna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/07 14:04:23 by tturna            #+#    #+#             */
-/*   Updated: 2022/08/14 15:25:50 by emreyilmaz       ###   ########.fr       */
+/*   Updated: 2022/08/23 15:49:16 by tturna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ void	ft_exit(char *s)
 	exit(1);
 }
 
-
 int	main(int ac, char **av)
 {
 	t_game	*tuna;
@@ -35,14 +34,13 @@ int	main(int ac, char **av)
 		return (0);
 	i = 0;
 	if (ac == 2)
-	//oyun çıktısı ve harita bilgisi olduğu için 2 arguman tanımladık
 	{
 		tuna->ps = 50;
-		if (!ft_init(tuna, ac, av))
-			ft_exit("hata");
+		if (!ft_init(tuna, av))
+			ft_exit("error");
 	}
 	else
-		ft_exit("hatali arguman sayisi");
-	mlx_hook(tuna->window, 2, 1L << 0, hareket, tuna);
-	mlx_loop(tuna->mlx); 
+		ft_exit("argument error");
+	mlx_hook(tuna->window, 2, 1L << 0, keys, tuna);
+	mlx_loop(tuna->mlx);
 }

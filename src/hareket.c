@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   hareket.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: emreyilmaz <emreyilmaz@student.42.fr>      +#+  +:+       +#+        */
+/*   By: tturna <tturna@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/06 17:36:42 by tturna            #+#    #+#             */
-/*   Updated: 2022/08/14 15:25:44 by emreyilmaz       ###   ########.fr       */
+/*   Updated: 2022/08/23 17:01:52 by tturna           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	yap(t_game *tuna, int x, int y)
+void	maker(t_game *tuna, int x, int y)
 {
 	if (tuna->map[tuna->ply + y][tuna->plx + x] == 'C')
 		tuna->coin_count--;
@@ -27,9 +27,8 @@ void	yap(t_game *tuna, int x, int y)
 		tuna->plx += x;
 		tuna->p_move++;
 		ft_printf("                                                  ");
-		ft_printf("\033[1;34m\rHamle sayisi : %i", tuna->p_move);
+		ft_printf("\033[1;34m\rMoves : %i", tuna->p_move);
 	}
-	//yeni satır yerine "/r" ile carriage return kullanıyoruz.
 	else if (tuna->map[tuna->ply + y][tuna->plx + x] == 'E')
 	{
 		if (tuna->coin_count == 0)
@@ -55,7 +54,7 @@ void	ft_move(t_game *tuna, int dir_x, int dir_y)
 		{
 			if ((tuna)->map[y][x] == 'P')
 			{
-				yap((tuna), dir_x, dir_y);
+				maker((tuna), dir_x, dir_y);
 				breaker = true;
 				break ;
 			}
@@ -65,7 +64,7 @@ void	ft_move(t_game *tuna, int dir_x, int dir_y)
 	}
 }
 
-int	hareket(int key_code, t_game *tuna)
+int	keys(int key_code, t_game *tuna)
 {
 	if (key_code == 53)
 	{
